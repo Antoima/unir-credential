@@ -1,0 +1,36 @@
+/* Estilo para el botón de Google */
+.g-signin2 {
+  background-color: #4285f4; /* Color de fondo de Google */
+  color: white;
+  font-size: 16px;
+  border-radius: 6px; /* Esquinas redondeadas, igual que el botón "Generar" */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 50px; /* Igual que el botón "Generar" */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Aplicamos el margen desde aquí */
+  text-align: center;
+}
+
+.g-signin2:hover {
+  background-color: #357ae8; /* Color al pasar el mouse */
+}
+
+.g-signin2 img {
+  width: 20px;
+  margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+/* Media Queries */
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+  .g-signin2 {
+    width: 100%; /* Aseguramos que el botón se adapte al 100% del contenedor */
+    height: 45px; /* Ajuste en altura para pantallas pequeñas si es necesario */
+  }
+}
