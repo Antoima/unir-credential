@@ -20,11 +20,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script> <!-- Nueva biblioteca -->
     
+<!-- SweetAlert2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  
     <!-- jwt inicializacion -->
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 
     <!-- Google Sign-In JS Initialization -->
     <script src="assets/js/google-signin.js" defer></script>
+
+
 
   </head>
 

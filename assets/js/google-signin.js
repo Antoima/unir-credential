@@ -10,7 +10,8 @@ window.onload = function () {
     .then((response) => response.json())
     .then((data) => {
       const clientId = data.client_id;
-      console.log("Client ID recibido:", clientId);
+      // console.log("Client ID recibido:", clientId);
+      console.log("Client ID recibido:");
 
       // Verificamos si el client_id es válido
       if (!clientId) {
@@ -39,13 +40,27 @@ window.onload = function () {
 function handleCredentialResponse(response) {
   try {
     // Decodificamos el token JWT (response.credential)
-    const user = jwt_decode(response.credential); // Usar la librería jwt-decode
-    console.log("Datos del usuario:", user);
-    console.log("ID del usuario:", user.sub); // Sub es el ID del usuario
-    console.log("Nombre del usuario:", user.name);
-    console.log("Email del usuario:", user.email);
-    console.log("photo del usuario:", user.picture);
+    const user = jwt_decode(response.credential);
+    // console.log("Datos del usuario:", user);
+
+    // Mostrar los datos del usuario en SweetAlert2 con imagen visible
+    Swal.fire({
+      title: `¡Bienvenido, ${user.name}!`,
+      icon: "success", // Icono normal de SweetAlert2
+      confirmButtonText: "¡Genial!",
+      confirmButtonColor: "#4CAF50", // Color verde moderno
+      background: "#fefefe",
+      color: "#333", // Color del texto
+    });
   } catch (error) {
     console.error("Error al decodificar el JWT:", error);
+
+    Swal.fire({
+      title: "Error",
+      text: "No se pudo obtener la información del usuario.",
+      icon: "error", // Icono normal de error
+      confirmButtonText: "Cerrar",
+      confirmButtonColor: "#d33",
+    });
   }
 }
