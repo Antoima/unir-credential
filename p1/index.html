@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>WebAndroid p1</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Box-En.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" />
+
+    
+</head>
+
+<body>
+  <div class="loaders" id="loaders"></div>
+
+  <div class="cuerpos" id="cuerpos"></div>
+  
+      <div class="d-flex flex-column justify-content-center fr" id="login-box" >
+        <div id="contenedor2" style="background-image: url(&quot;assets/img/frente%20fondo%20solo.png&quot;);background-size: cover;background-repeat: no-repeat;">
+        <form class="fr" id="frames" method="get">
+          <div class="login-box-header" style="height: 66px;background-color: rgba(255,255,255,0);"></div>
+          <div class="login-box-header" style="background-image: url(&quot;assets/img/logotipo%20credencial2.png&quot;);background-size: contain;background-repeat: no-repeat;background-position: right;height: 80px;background-color: rgba(255,255,255,0);margin-right: 10%;"></div>
+          <div class="email-login" style="background-color: rgba(255,255,255,0);">
+            <input type="hidden" class="password-input form-control" style="margin-top:0px;" required="" placeholder="Nombre completo" minlength="6" maxlength="200" name="nombre" id="nombre" autofocus="" inputmode="latin-name">
+            <input type="hidden" class="password-input form-control" style="margin-top:0px;" required="" placeholder="Correo" minlength="6" maxlength="200" name="correo" id="correo" inputmode="email">
+            <p id="nombree" style="text-align:left; font-family:sans-serif;font-size: 16pt; color: rgb(133, 133, 133); margin-left: 10%; margin-top: 0%"></p>
+            <p id="correoo" style="text-align:left;font-family:sans-serif;font-size: 16pt; color: rgb(133, 133, 133); margin-left: 10%; margin-bottom: 0%"></p>
+          </div>
+          <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">
+            <div class="d-flex justify-content-between">
+              <div class="form-check form-check-inline invisible" id="form-check-rememberMe">
+                <input class="form-check-input" type="checkbox" id="formCheck-1" for="remember" style="cursor:pointer;" name="check">
+                <label class="form-check-label" for="formCheck-1"></label>
+              </div>
+              <a class="text-success" id="fecha" href="#"></a>
+            </div>
+          </div>
+          <div class="shadow-none" id="login-box-footer" style="padding: 10px 20px;padding-bottom: 23px;padding-top: 18px;background-image: url(&quot;assets/img/logotipo%20biocon.png&quot;);background-size: contain;background-repeat: no-repeat;height: 60px;"></div>
+          <div id="login-box-footer" style="padding: 10px 20px;padding-bottom: 23px;padding-top: 18px;background-size: contain;background-repeat: no-repeat;height: 66px;"></div>
+  
+          <div id="cerr"></div>
+          <div id="cer" data-html2canvas-ignore="true">
+            <a href="../index.html" id="cerrarr" onclick="signOutt();">Cerrar</a>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+    
+  <button class="btn btn-primary btn-block box-shadow frb" id="btnCapturar" style="background-color: rgb(36,162,161);margin-top: 0px;" onclick="capturar()">Descargar credencial</button>
+  
+  <a href="https://goo.gl/maps/E8XFAnx9WetS4wFK6" id="btnMapp" target="_blank">
+    <button class="btn btn-primary btn-block box-shadow frb" style="background-color: rgb(36,162,161);background-position: center;background-repeat: no-repeat;background-size:contain;margin-top: 5px;height: 35px; background-image: url(assets/img/mp.png);" id="btnMap" type="submit"></button>
+  </a>
+  
+  <a href="https://api.whatsapp.com/send?phone=5493515524307" target="_blank">
+    <button class="btn btn-primary btn-block box-shadow frb" style="background-color: rgb(36,162,161);background-position: center;background-repeat: no-repeat;background-size:contain;margin-top: 5px;height: 35px; background-image: url(assets/img/ws.png);margin-top: 5px;height: 35px;" id="btnWs"></button>
+  </a>
+  
+  <!-- <script src="assets/js/canva.js"></script> -->
+  <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+  <script src="assets/js/jQuery v3.7.1.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ 
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  
+    
+     <script >
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var c = url.searchParams.get("nombre");
+      var c2 = url.searchParams.get("correo");
+
+      var c3d;
+      var c4d;
+      var c3a;
+      var c4a;
+
+      mostrarCarga();
+  
+      if (c !== null) {
+      }
+  
+      if (c2 !== null) {
+      }
+  
+      var c3 = url.searchParams.get("id");
+      var c4 = url.searchParams.get("id2");
+     
+  
+      if (c3 !== null) {
+        descifrarDatos(c3,c4);
+        $("#nombree").html(c3a);
+        $("#correoo").html(c4a);
+      }
+  
+      if (c4 !== null) {
+      }
+  
+      var hoy = new Date();
+      var fecha = hoy.getDate() + "-" + (hoy.getMonth() + 1) + "-" + (hoy.getFullYear() + 1);
+      var hora = hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+      var Fechayhora = fecha + " " + hora;
+  
+      $("#fecha").html("Vence: " + fecha + "");
+  
+      var nombreFoto;
+  
+      
+  
+  
+      function listo() {
+  
+          const $botonn = document.querySelector("#btnCapturar");
+          const $objetivo2 = document.querySelector("#contenedor2");
+  
+          const enviarCapturaAServidor2 = canvas => {
+              let imagenComoBase64 = canvas.toDataURL();
+              imagenComoBase64 = encodeURIComponent(imagenComoBase64);
+              const payload = {
+                  "captura": imagenComoBase64,
+                  "by": "Parzibyte",
+              };
+              const ruta = "https://unircredencial.com.ar/p1/capture.php";
+              fetch(ruta, {
+                  method: "POST",
+                  body: JSON.stringify(payload),
+                  headers: {
+                      "Content-type": "application/x-www-form-urlencoded",
+                  }
+              })
+                  .then(resultado => {
+                      return resultado.text()
+                  })
+                  .then(nombreDeLaFoto => {
+                      console.log({ nombreDeLaFoto });
+                      cot2(nombreDeLaFoto);
+                  });
+          };
+  
+          html2canvas($objetivo2)
+              .then(enviarCapturaAServidor2);
+  
+      }
+  
+  
+      function cot2(a) {
+          var url_string = window.location.href;
+          var url = new URL(url_string);
+          var c = url.searchParams.get("nombre");
+          var c2 = url.searchParams.get("correo");
+  
+          if (c2 !== null) {
+              comprueba_correo2(c2, c, a);
+          }
+  
+          var c3 = url.searchParams.get("id");
+          var c4 = url.searchParams.get("id2");
+  
+          if (c4 !== null) {
+            descifrarDatos(c3,c4);
+           
+           
+              comprueba_correo2(c3d, c4d, a);
+          }
+      }
+  
+      function descifrarDatos(nombreCifrado, correoCifrado) {
+        
+   c3d = atob(nombreCifrado);
+   c4d = atob(correoCifrado);
+   
+   c3a = atob(nombreCifrado);
+   c4a = atob(correoCifrado);
+
+   //listo();
+  
+}
+
+      function comprueba_correo2(name,email, cd) {
+       
+          $.ajax({
+              url: 'https://unircredencial.com.ar/p1/correoA.php',
+              type: 'POST',
+              cache: false,
+              data: 'correo=' + email + '&nombre=' + name + '&foto=' + cd,
+              beforeSend: function () {
+                // mostrarCarga();
+              // mostraMensajeInfo();
+                
+              },
+              success: function (resultado) {
+                  var nombre = resultado.nombre;
+                  var estados = resultado.estado;
+                  if (estados == 'true') {
+                  //  mostraMensajeSuccess();
+                    ocultarCarga();
+                      // Correcto
+                  } else {
+                      alert("Algo salio mal, intente nuevamente: " + nombre);
+                     // window.location.replace("https://unircredencial.com/");
+                  }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                ocultarCarga();
+                  if (jqXHR.status === 0) {
+                      alert('Not connect: Verify Network.');
+                  } else if (jqXHR.status == 404) {
+                      alert('Requested page not found [404]');
+                  } else if (jqXHR.status == 500) {
+                      alert('Internal Server Error [500].');
+                  } else if (textStatus === 'parsererror') {
+                      alert('Requested JSON parse failed.');
+                  } else if (textStatus === 'timeout') {
+                      alert('Time out error.');
+                  } else if (textStatus === 'abort') {
+                      alert('Ajax request aborted.');
+                  } else {
+                      alert('Uncaught Error: ' + jqXHR.responseText);
+                  }
+              }
+          });
+      }
+
+      
+function mostrarCarga() {
+  document.getElementById("loaders").style.display = "block";
+}
+
+// Función para ocultar el elemento de carga
+function ocultarCarga() {
+  document.getElementById("loaders").style.display = "none";
+}
+
+function mostraMensajeInfo(){
+    new Noty({
+  text: 'Creando correo, esperando respuesta del servidor',
+  type: 'warning', // Puedes cambiar el tipo de mensaje (success, error, warning, info)
+  layout: 'topRight', // Puedes cambiar la posición del mensaje (top, topLeft, topCenter, topRight, center, centerLeft, centerRight, bottom, bottomLeft, bottomCenter, bottomRight)
+  timeout: 3000 // Duración en milisegundos antes de que el mensaje se cierre automáticamente
+}).show();
+ }
+
+ function mostraMensajeSuccess(){
+    new Noty({
+  text: 'Correcto',
+  type: 'success', // Puedes cambiar el tipo de mensaje (success, error, warning, info)
+  layout: 'topRight', // Puedes cambiar la posición del mensaje (top, topLeft, topCenter, topRight, center, centerLeft, centerRight, bottom, bottomLeft, bottomCenter, bottomRight)
+  timeout: 3000 // Duración en milisegundos antes de que el mensaje se cierre automáticamente
+}).show();
+ }
+
+  </script>
+  
+  
+  <script>
+      const $boton = document.querySelector("#btnCapturar");
+      const $objetivo = document.querySelector("#contenedor2");
+  
+      $boton.addEventListener("click", () => {
+          html2canvas($objetivo)
+              .then(canvas => {
+                  let enlace = document.createElement('a');
+                  enlace.download = "Credenciales.png";
+                  enlace.href = canvas.toDataURL();
+                  enlace.click();
+                  document.getElementById('btnCapturar').disabled = true;
+              });
+      });
+
+
+
+      function esperar() {
+  // Código que se ejecuta antes del retraso
+  console.log("Esperando...");
+
+  // Código que se ejecutará después del retraso
+  setTimeout(function () {
+    listo();
+  }, 1000);
+}
+
+
+// Llamada a la función esperar
+esperar();
+
+
+
+  </script>
+</body>
+
+</html>
