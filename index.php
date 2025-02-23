@@ -18,8 +18,11 @@
 
     <!-- External JS Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script> <!-- Nueva biblioteca -->
     
+    <!-- jwt inicializacion -->
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
     <!-- Google Sign-In JS Initialization -->
     <script src="assets/js/google-signin.js" defer></script>
 
@@ -41,8 +44,7 @@
         </div>
 
         <!-- Botón Google Sign-In -->
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
+        <div id="google-signin-btn"></div> <!-- Actualización: lugar para el botón -->
 
         <div id="login-box-footer"></div>
         <div id="login-box-foote"></div>

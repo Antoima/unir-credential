@@ -1,7 +1,7 @@
 window.onload = function () {
   // Verifica si gapi está cargado correctamente
-  if (typeof gapi === "undefined") {
-    console.error("gapi no está cargado");
+  if (typeof google === "undefined" || !google.accounts) {
+    console.error("Google Identity Services no está cargado");
     return;
   }
 
@@ -18,36 +18,34 @@ window.onload = function () {
         return;
       }
 
-      // Asegúrate de que gapi está completamente cargado antes de inicializar
-      gapi.load("auth2", function () {
-        const auth2 = gapi.auth2.init({
-          client_id: clientId, // Usamos el client_id obtenido
-        });
-
-        console.log("Google Sign-In inicializado correctamente");
-
-        // Aseguramos que el botón de Google Sign-In esté listo
-        auth2.attachClickHandler(
-          document.querySelector(".g-signin2"),
-          {},
-          function (googleUser) {
-            onSignIn(googleUser);
-          }
-        );
+      // Inicializamos Google Sign-In con la nueva API
+      google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleCredentialResponse, // Callback que maneja la respuesta del usuario
       });
+
+      // Renderizamos el botón de Google Sign-In
+      google.accounts.id.renderButton(
+        document.getElementById("google-signin-btn"), // ID del contenedor del botón
+        { theme: "outline", size: "large" } // Opciones de estilo
+      );
     })
     .catch((error) => {
       console.error("Error al obtener el client_id:", error);
     });
 };
 
-// Función que maneja la autenticación de Google
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  var userId = profile.getId();
-  var userName = profile.getName();
-  var userEmail = profile.getEmail();
-  console.log("ID: " + userId);
-  console.log("Nombre: " + userName);
-  console.log("Email: " + userEmail);
+// Función de callback cuando el usuario inicia sesión
+function handleCredentialResponse(response) {
+  try {
+    // Decodificamos el token JWT (response.credential)
+    const user = jwt_decode(response.credential); // Usar la librería jwt-decode
+    console.log("Datos del usuario:", user);
+    console.log("ID del usuario:", user.sub); // Sub es el ID del usuario
+    console.log("Nombre del usuario:", user.name);
+    console.log("Email del usuario:", user.email);
+    console.log("photo del usuario:", user.picture);
+  } catch (error) {
+    console.error("Error al decodificar el JWT:", error);
+  }
 }
