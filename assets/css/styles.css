@@ -1,0 +1,201 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7fa;
+}
+
+/* Loader */
+.loaders {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("../img/cargando.gif") 50% 50% no-repeat rgb(249, 249, 249);
+  opacity: 1;
+}
+
+/* Login Box */
+#login-box {
+  margin: 0 auto;
+  margin-top: 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  max-width: 500px;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+  background-image: url("../../assets/img/frente%20fondo%20solo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-box-heade {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.login-box-heade:nth-child(2) {
+  background-image: url("../../assets/img/logo%20solo%20sin%20letras.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80px;
+}
+
+.email-login {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.password-input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Focus Effects */
+.password-input:focus {
+  border-color: #36a2a1;
+  box-shadow: 0 0 5px rgba(54, 162, 161, 0.4);
+  outline: none;
+}
+
+/* Button Styles */
+#sub {
+  background-color: #36a2a1;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+#sub:hover {
+  background-color: #2c8f8b;
+}
+
+#login-box-footer {
+  background-image: url("../../assets/img/logotipo%20biocon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 60px;
+}
+
+#submit-id-submit {
+  margin-top: 20px;
+  height: 46px;
+  background-color: rgb(26, 138, 111);
+  border: 0;
+  color: rgb(255, 255, 255);
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+#submit-id-submit:hover {
+  background-color: rgb(25, 130, 105);
+}
+
+.login-box-footer {
+  padding: 10px 20px;
+  padding-bottom: 23px;
+  padding-top: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 60px;
+  background-image: url("../../assets/img/logotipo%20biocon.png");
+}
+
+#login-box-foote {
+  padding: 10px 20px;
+  padding-bottom: 0px;
+  padding-top: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 66px;
+  background-image: url("../../assets/img/tira%20de%20logotipos%20abajo.png");
+}
+
+.submit-row {
+  margin-bottom: 8px;
+  padding-top: 0px;
+  height: 140px;
+  padding-bottom: 8px;
+}
+
+.email-imput {
+  border-radius: 5px;
+  color: #29303b;
+  font-size: 18px;
+  height: auto;
+  padding: 11px 10px 12px 40px;
+}
+
+.form-control {
+  box-shadow: none;
+  font-size: 16px;
+  padding: 10px 12px;
+  transition: border-color 0.08s ease-in-out, box-shadow 0.08s ease-in-out;
+}
+
+.label-text {
+  color: #8b8b8b;
+}
+
+#forgot-password-link {
+  color: #2474c1;
+  text-decoration: none;
+}
+
+#register-link {
+  color: #2474c1;
+  padding: 0px 10px;
+  text-decoration: none;
+}
+
+#login-box-footer p {
+  color: #8b8b8b;
+}
+
+/* Estilos adicionales específicos para el formulario de login */
+.email-login input {
+  margin-top: 10px;
+}
+
+/* Media Queries */
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+  #login-box {
+    width: 100%;
+    margin-top: 0;
+  }
+  .fr {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  .frr {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
