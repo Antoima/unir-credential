@@ -1,5 +1,3 @@
-// google-signin.js
-
 window.onload = function () {
   // Realizamos una solicitud AJAX para obtener el client_id
   fetch("assets/php/config.php")
@@ -9,6 +7,7 @@ window.onload = function () {
 
       // Verificamos que el client_id fue recibido correctamente
       console.log("Client ID recibido:", clientId);
+      console.log("gapi object:", gapi); // Asegúrate de que esto no sea null
 
       // Verificamos si el client_id es válido
       if (!clientId) {
@@ -18,10 +17,20 @@ window.onload = function () {
 
       // Inicializamos Google Sign-In con el client_id recibido
       gapi.load("auth2", function () {
-        gapi.auth2.init({
+        const auth2 = gapi.auth2.init({
           client_id: clientId, // Usamos el client_id obtenido
         });
+
         console.log("Google Sign-In inicializado correctamente");
+
+        // Aseguramos que el botón de Google Sign-In esté listo
+        auth2.attachClickHandler(
+          document.querySelector(".g-signin2"),
+          {},
+          function (googleUser) {
+            onSignIn(googleUser);
+          }
+        );
       });
     })
     .catch((error) => {

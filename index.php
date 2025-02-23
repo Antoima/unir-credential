@@ -43,6 +43,7 @@
         <!-- Botón Google Sign-In -->
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+
         <div id="login-box-footer"></div>
         <div id="login-box-foote"></div>
       </div>
