@@ -1,8 +1,7 @@
 <?php
 // En el backend, asegúrate de tener la variable con el client_id
-$client_id = "472435009550-bek0e4bq0lb394f4bu5idjqe9k04b2mm.apps.googleusercontent.com";
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -21,16 +20,8 @@ $client_id = "472435009550-bek0e4bq0lb394f4bu5idjqe9k04b2mm.apps.googleuserconte
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
-    <!-- Google Sign-In Initialization -->
-    <script>
-      window.onload = function () {
-        gapi.load('auth2', function () {
-          gapi.auth2.init({
-            client_id: '<?php echo $client_id; ?>'  // Aquí pasamos el client_id desde PHP
-          });
-        });
-      };
-    </script>
+    <!-- Google Sign-In JS Initialization -->
+    <script src="assets/js/google-signin.js" defer></script>
 
   </head>
 
@@ -50,7 +41,7 @@ $client_id = "472435009550-bek0e4bq0lb394f4bu5idjqe9k04b2mm.apps.googleuserconte
         </div>
 
         <!-- Botón Google Sign-In -->
-        <div class="g-signin2" data-onsuccess="onSignIn" ></div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
         <div id="login-box-footer"></div>
         <div id="login-box-foote"></div>
@@ -60,7 +51,5 @@ $client_id = "472435009550-bek0e4bq0lb394f4bu5idjqe9k04b2mm.apps.googleuserconte
     <!-- JS Files -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/onSignIn.js"></script>
   </body>
 </html>
-
