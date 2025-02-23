@@ -1,13 +1,16 @@
 window.onload = function () {
+  // Verifica si gapi está cargado correctamente
+  if (typeof gapi === "undefined") {
+    console.error("gapi no está cargado");
+    return;
+  }
+
   // Realizamos una solicitud AJAX para obtener el client_id
   fetch("assets/php/config.php")
     .then((response) => response.json())
     .then((data) => {
       const clientId = data.client_id;
-
-      // Verificamos que el client_id fue recibido correctamente
       console.log("Client ID recibido:", clientId);
-      console.log("gapi object:", gapi); // Asegúrate de que esto no sea null
 
       // Verificamos si el client_id es válido
       if (!clientId) {
@@ -15,7 +18,7 @@ window.onload = function () {
         return;
       }
 
-      // Inicializamos Google Sign-In con el client_id recibido
+      // Asegúrate de que gapi está completamente cargado antes de inicializar
       gapi.load("auth2", function () {
         const auth2 = gapi.auth2.init({
           client_id: clientId, // Usamos el client_id obtenido
